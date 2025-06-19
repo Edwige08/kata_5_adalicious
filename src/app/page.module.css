@@ -174,3 +174,76 @@ a.secondary {
   align-items: center;
   gap: 1rem;
 }
+.helloUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.menuCardDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dishCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  width: 500px;
+  border: solid 2px black;
+  border-radius: 10px;
+}
+.dishImage {
+  margin: 10px;
+  padding: 10px;
+  font-size: 2rem;
+  border: solid 1px grey;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+.dishImgAndText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.dishName {
+  margin-bottom: 5px;
+}
+.dishButton {
+  padding: 10px 30px;
+  margin: 10px auto;
+  background-color: darkolivegreen;
+  color: antiquewhite;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.dishButton:hover {
+  translate: 1px 2px;
+  transition: 0.1s ease-in-out;
+}
+
+.inputNameDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px;
+  background-color: bisque;
+  border-radius: 10px;
+}
+.inputName {
+  padding-left: 5px;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.adaliciousTitle {
+  font-size: 2rem;
+}

@@ -1,35 +1,56 @@
 'use client'
 import { useEffect, useState } from "react"
 import MenuCard from "../components/MenuCard"
+import styles from "../page.module.css";
 
 export default function Menu() {
     const username = localStorage.getItem("username")
+    const userId = parseInt(localStorage.getItem("userId"))
 
-    const [dishes, setDishes] = useState([])
+    const [dishes, setDishes] = useState();
 
     async function fetchDishes() {
-        const promise = await fetch('http://localhost:3010/dishes');
-        const response = await promise.json();
-        setDishes(response);
+        const response = await fetch('http://localhost:3010/dishes');
+        const data = await response.json();
+        setDishes(data);
+    }
+
+    async function postOrder(dishId) {
+        const response = await fetch('http://localhost:3010/orders', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ userId: userId, dishId: dishId })
+        })
+    }
+
+    const handleClickDish = (dish) => {
+        localStorage.setItem("dishName", dish.dish_name);
+        localStorage.setItem("dishImage", dish.image);
+        console.log("dish.image : " + dish.image);
+        postOrder(dish.id)
     }
 
     useEffect(() => {
         fetchDishes()
     }, [])
 
+
+
     return (
         <>
-            <p>Bonjour {username} !</p>
-            <div>
+            <p className={styles.helloUser}>Bonjour {username} !</p>
+            <div className={styles.menuCardDiv}>
                 {dishes && dishes.map((dish, index) => {
 
                     return (
                         <MenuCard
-                            key={index}
+                            key={dish.id || index}
                             image={dish.image}
-                            dishName={dish.plate}
+                            dishName={dish.dish_name}
                             dishDescription={dish.description}
-                            handleClick={() => localStorage.setItem("order", dish)}
+                            handleClick={() => {handleClickDish(dish)}}
                         />
                     )
                 })}

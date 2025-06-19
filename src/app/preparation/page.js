@@ -1,23 +1,23 @@
 'use client'
+import styles from "../page.module.css";
+
 export default function Preparation() {
     const username = localStorage.getItem("username")
-    const order = localStorage.getItem("order")
-    console.log("order.image : " + order.image)
-    console.log("order[0] : " + order[0])
-    console.log("order : " + order)
+    const dishName = localStorage.getItem("dishName")
+    const dishImage = localStorage.getItem("dishImage")
 
     return (
         <>
-            <p>Merci pour ta commande {username} !</p>
+            <p className={styles.helloUser}>Merci pour ta commande {username} !</p>
             <div>
                 <p>Suivi :</p>
-                <div>
-                    <p>En préparation...</p>
-                    <div>
-                        {order.image}
+                <div className={styles.dishCard}>
+                    <p>En préparation :</p>
+                    <div className={styles.dishImage}>
+                        {dishImage}
                     </div>
                     <p>
-                        {order.plate}
+                        1 x {dishName}
                     </p>
                 </div>
             </div>
