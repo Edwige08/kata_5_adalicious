@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "./page.module.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <header className={styles.adaliciousTitle}>Adalicious 🥦</header>
+        <Link href="./">Retour à l'accueil</Link>
         {children}
       </body>
     </html>

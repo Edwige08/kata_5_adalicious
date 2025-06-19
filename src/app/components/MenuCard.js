@@ -21,7 +21,7 @@ export default function MenuCard(props) {
             </div>
             <div>
                 <Link href="../preparation">
-                    <Button text="commander" onClick={props.handleClick} />
+                    <Button text="commander" onClick={props.handleClick} classe={styles.dishButton} />
                 </Link>
             </div>
         </article>

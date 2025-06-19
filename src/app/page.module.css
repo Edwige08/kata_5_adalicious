@@ -174,6 +174,7 @@ a.secondary {
   align-items: center;
   gap: 1rem;
 }
+
 .helloUser {
   display: flex;
   flex-direction: column;
@@ -182,11 +183,13 @@ a.secondary {
   font-size: 1.5rem;
   font-weight: bold;
 }
+
 .menuCardDiv {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .dishCard {
   display: flex;
   flex-direction: column;
@@ -197,6 +200,7 @@ a.secondary {
   border: solid 2px black;
   border-radius: 10px;
 }
+
 .dishImage {
   margin: 10px;
   padding: 10px;
@@ -205,15 +209,18 @@ a.secondary {
   border-radius: 10px;
   background-color: lightgrey;
 }
+
 .dishImgAndText {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
 }
+
 .dishName {
   margin-bottom: 5px;
 }
+
 .dishButton {
   padding: 10px 30px;
   margin: 10px auto;
@@ -223,9 +230,38 @@ a.secondary {
   font-weight: bold;
   font-size: 0.9rem;
 }
-.dishButton:hover {
+
+.dishButton:hover, .deleteButton:hover, .prepareButton:hover, .readyButton:hover {
   translate: 1px 2px;
   transition: 0.1s ease-in-out;
+}
+
+.deleteButton {
+  padding: 10px 30px;
+  margin: 10px auto;
+  background-color: red;
+  color: antiquewhite;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.prepareButton {
+  padding: 10px 30px;
+  margin: 10px auto;
+  background-color: orange;
+  color: antiquewhite;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.readyButton {
+  padding: 10px 30px;
+  margin: 10px auto;
+  background-color: green;
+  color: antiquewhite;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .inputNameDiv {
@@ -237,6 +273,7 @@ a.secondary {
   background-color: bisque;
   border-radius: 10px;
 }
+
 .inputName {
   padding-left: 5px;
   width: 200px;
