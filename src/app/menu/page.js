@@ -40,8 +40,8 @@ export default function Menu() {
 
     return (
         <>
-            <p className={styles.helloUser}>Bonjour {username} !</p>
-            <div className={styles.menuCardDiv}>
+            <p className="mt-5 mb-3 text-2xl font-bold text-center">Bonjour {username} !</p>
+            <div className="flex flex-col items-center">
                 {dishes && dishes.map((dish, index) => {
 
                     return (

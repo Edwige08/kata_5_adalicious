@@ -1,6 +1,13 @@
+@import 'tailwindcss';
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --firstColor: #FFF1CA;
+  --secondColor: #FFB823;
+  --thirdColor: #708A58;
+  --fourthColor: #2D4F2B;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,8 +33,6 @@ body {
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 a {

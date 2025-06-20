@@ -38,45 +38,49 @@ export default function KitchenView() {
 
     return (
         <>
-            <Link href="../">
-                <button>interface client</button>
-            </Link>
-            <h3>VUE CUISINE</h3>
-            <div>
+            <div className="flex justify-end text-(--firstColor)">
+                <Link href="../" className="pt-1 pr-2 pb-1 pl-2 m-2 rounded-md bg-(--fourthColor)">
+                    <button>interface client</button>
+                </Link>
+            </div>
+            <h3 className="m-4 text-center font-bold text-2xl">VUE CUISINE</h3>
+            <div className="flex flex-col gap-5 items-center">
                 {ordersList && ordersList.map((order, index) => {
                     console.log("🍔", order.order_status)
                     return (
-                        <div key={index}>
-                            <div className={styles.dishCard}>
-                                <div className={styles.dishImgAndText}>
-                                    <p className={styles.dishImage}>
+                        <div
+                            key={index}
+                            className="flex flex-col items-center min-w-[300px] max-w-[500px]">
+                            <div className='flex flex-col gap-2 border border-2 border-(--fourthColor) rounded-lg m-2 p-2 w-full'>
+                                <div className="flex flex-row w-full">
+                                    <p className="flex flex-col justify-start mr-2 p-3 size-fit border rounded-lg border-(--secondColor) bg-(--firstColor) text-4xl">
                                         {order.id}
                                     </p>
                                     <div>
-                                        <h3 className={styles.dishName}>
+                                        <h3 className="font-bold mb-2 text-lg">
                                             Commande de l'user à l'id n°{order.user_id}
                                         </h3>
-                                        <p>
+                                        <p className="italic">
                                             1x plat à l'id n°{order.dish_id}
                                         </p>
                                     </div>
                                 </div>
-                                <div className={styles.dishImgAndText}>
+                                <div className="flex flex-row gap-4 justify-around w-full">
                                     <Button
                                         text="En préparation"
-                                        classe={styles.prepareButton}
+                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--secondColor) font-bold text-(--firstColor) hover:translate-0.5"
                                     />
                                     <Button
                                         text="Prête !"
-                                        classe={styles.readyButton}
+                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--thirdColor) font-bold text-(--firstColor) hover:translate-0.5"
                                     />
                                 </div>
                             </div>
-                            <div>
+                            <div className="w-full">
                                 <Button
                                     text="Annuler la commande"
-                                    classe={styles.deleteButton}
-                                    onClick={() => {handleClickDish(order.id)}}
+                                    classe="p-2 pl-4 pr-4 w-full rounded-lg bg-red-500 font-bold text-(--firstColor) hover:translate-0.5"
+                                    onClick={() => { handleClickDish(order.id) }}
                                 />
                             </div>
                         </div>

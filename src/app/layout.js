@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import styles from "./page.module.css";
 import Link from "next/link";
+import './globals.css';
+import "tailwindcss";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,8 +23,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header className={styles.adaliciousTitle}>Adalicious 🥦</header>
-        <Link href="./">Retour à l'accueil</Link>
+        <header className="p-4 flex flex-row items-center bg-(--firstColor) shadow-md">
+          <Link href="./">
+            <h1 className="text-2xl font-bold hover:text-(--fourthColor)">Adalicious 🥦</h1>
+          </Link>
+        </header>
         {children}
       </body>
     </html>

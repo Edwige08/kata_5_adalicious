@@ -33,25 +33,32 @@ export default function Home() {
 
   return (
     <>
-      <Link href="./kitchenView">
-        <button>interface cuisine</button>
-      </Link>
-      <div className={styles.mainContent}>
-        <h1>
+      <div className="flex justify-end text-(--firstColor)">
+        <Link href="./kitchenView" className="pt-1 pr-2 pb-1 pl-2 m-2 rounded-md bg-(--fourthColor) hover:translate-0.25 hover:ease-in-out hover:duration-[0.2s]">
+          interface cuisine
+        </Link>
+      </div>
+      <div>
+        <h2 className="flex flex-col items-center m-2 mb-10 text-2xl font-bold">
           <div>🥦</div>
-          <div>Bienvenue sur Adalicious</div>
-        </h1>
-        <p>Pour commencer, peux-tu me donner ton prénom :</p>
-        <form className={styles.inputNameDiv}>
+          <div>Bienvenue sur Adalicious !</div>
+        </h2>
+        <p className="m-2 text-center">
+          Pour commencer, quel est ton prénom ?
+          </p>
+        <form className="flex flex-col justify-center items-center gap-2 m-auto p-3 w-fit rounded-md border-1 border-(--fourthColor) bg-(--thirdColor)">
           <input
             type="text"
             placeholder="Ton prénom"
             value={userName}
             onChange={e => setUserName(e.target.value)}
-            className={styles.inputName}>
+            className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)">
           </input>
-          <Link href="./menu" >
-            <Button type="submit" onClick={handleClick} text="valider" />
+          <Link href="./menu" className="border border-(--fourthColor) p-2 w-[80%] text-center font-bold rounded-sm bg-(--secondColor) shadow-xs hover:translate-0.25 hover:ease-in-out hover:duration-[0.2s]">
+            <Button
+              type="submit"
+              onClick={handleClick}
+              text="Valider" />
           </Link>
         </form>
       </div>

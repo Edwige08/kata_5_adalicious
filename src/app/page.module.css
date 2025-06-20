@@ -1,3 +1,4 @@
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -167,14 +168,6 @@ a.secondary {
   }
 }
 
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
 .helloUser {
   display: flex;
   flex-direction: column;
@@ -264,7 +257,7 @@ a.secondary {
   font-size: 0.9rem;
 }
 
-.inputNameDiv {
+/* .inputNameDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -272,7 +265,7 @@ a.secondary {
   padding: 10px;
   background-color: bisque;
   border-radius: 10px;
-}
+} */
 
 .inputName {
   padding-left: 5px;
