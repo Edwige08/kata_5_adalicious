@@ -6,6 +6,8 @@ import Button from "../components/Button";
 export default function KitchenView() {
 
     const [ordersList, setOrdersList] = useState();
+    const readyStatus = "Prête !";
+    const preparingStatus = "En préparation...";
 
     async function getOrders() {
         const response = await fetch('http://localhost:3010/orders');
@@ -13,27 +15,14 @@ export default function KitchenView() {
         setOrdersList(data);
     }
 
-    async function changeStatusToPreparing(orderId) {
+    async function changeStatus(orderId, status) {
         const response = await fetch('http://localhost:3010/orders', {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ orderId: orderId, order_status: "ready" })
+            body: JSON.stringify({ orderId: orderId, order_status: status })
         });
-        console.log("🍗 CHANGE STATUS FUNCTION")
-        const data = await response.json();
-    }
-
-    async function changeStatusToReady(orderId) {
-        const response = await fetch('http://localhost:3010/orders', {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ orderId: orderId, order_status: "ready" })
-        });
-        console.log("🍗 CHANGE STATUS FUNCTION")
         const data = await response.json();
     }
 
@@ -51,18 +40,11 @@ export default function KitchenView() {
     }
 
     const handleClickDish = (orderId) => {
-        console.log("DELETE ORDER")
         deleteOrder(orderId)
     }
 
-    const handleClickStatusPreparing = (orderId) => {
-        console.log("🍕 HANDLECLICK STATUS")
-        changeStatusToPreparing(orderId)
-    }
-
-    const handleClickStatusReady = (orderId) => {
-        console.log("🍕 HANDLECLICK STATUS")
-        changeStatusToReady(orderId)
+    const handleClickStatus = (orderId, status) => {
+        changeStatus(orderId, status)
     }
 
     useEffect(() => {
@@ -72,14 +54,15 @@ export default function KitchenView() {
     return (
         <>
             <div className="flex justify-end text-(--firstColor)">
-                <Link href="../" className="pt-1 pr-2 pb-1 pl-2 m-2 rounded-md bg-(--fourthColor)">
+                <Link
+                    href="../"
+                    className="pt-1 pr-2 pb-1 pl-2 m-2 rounded-md bg-(--fourthColor)">
                     <button>interface client</button>
                 </Link>
             </div>
             <h3 className="m-4 text-center font-bold text-2xl">VUE CUISINE</h3>
             <div className="flex flex-col gap-5 items-center">
                 {ordersList && ordersList.map((order, index) => {
-                    console.log("🍔", order.order_status)
                     return (
                         <div
                             key={index}
@@ -102,12 +85,12 @@ export default function KitchenView() {
                                     <Button
                                         text="En préparation"
                                         classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--secondColor) font-bold text-(--firstColor) hover:translate-0.5"
-                                        onClick={() => { handleClickStatusPreparing(order.id) }}
+                                        onClick={() => { handleClickStatus(order.id, preparingStatus) }}
                                     />
                                     <Button
                                         text="Prête !"
                                         classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--thirdColor) font-bold text-(--firstColor) hover:translate-0.5"
-                                        onClick={() => { handleClickStatusReady(order.id) }}
+                                        onClick={() => { handleClickStatus(order.id, readyStatus) }}
                                     />
                                 </div>
                             </div>
