@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from "react"
 import Link from "next/link";
-import styles from "../page.module.css";
 import Button from "../components/Button";
 
 export default function KitchenView() {
@@ -12,6 +11,30 @@ export default function KitchenView() {
         const response = await fetch('http://localhost:3010/orders');
         const data = await response.json();
         setOrdersList(data);
+    }
+
+    async function changeStatusToPreparing(orderId) {
+        const response = await fetch('http://localhost:3010/orders', {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ orderId: orderId, order_status: "ready" })
+        });
+        console.log("🍗 CHANGE STATUS FUNCTION")
+        const data = await response.json();
+    }
+
+    async function changeStatusToReady(orderId) {
+        const response = await fetch('http://localhost:3010/orders', {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ orderId: orderId, order_status: "ready" })
+        });
+        console.log("🍗 CHANGE STATUS FUNCTION")
+        const data = await response.json();
     }
 
     async function deleteOrder(orderId) {
@@ -30,6 +53,16 @@ export default function KitchenView() {
     const handleClickDish = (orderId) => {
         console.log("DELETE ORDER")
         deleteOrder(orderId)
+    }
+
+    const handleClickStatusPreparing = (orderId) => {
+        console.log("🍕 HANDLECLICK STATUS")
+        changeStatusToPreparing(orderId)
+    }
+
+    const handleClickStatusReady = (orderId) => {
+        console.log("🍕 HANDLECLICK STATUS")
+        changeStatusToReady(orderId)
     }
 
     useEffect(() => {
@@ -69,10 +102,12 @@ export default function KitchenView() {
                                     <Button
                                         text="En préparation"
                                         classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--secondColor) font-bold text-(--firstColor) hover:translate-0.5"
+                                        onClick={() => { handleClickStatusPreparing(order.id) }}
                                     />
                                     <Button
                                         text="Prête !"
                                         classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--thirdColor) font-bold text-(--firstColor) hover:translate-0.5"
+                                        onClick={() => { handleClickStatusReady(order.id) }}
                                     />
                                 </div>
                             </div>
