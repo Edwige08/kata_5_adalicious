@@ -39,21 +39,37 @@ export default function Home() {
         </Link>
       </div>
       <div>
-        <h2 className="flex flex-col items-center m-2 mb-10 text-2xl font-bold">
+        <h2 className="flex flex-col items-center m-2 mb-10 text-2xl font-bold bg-[url(./public/aperitif_amis.jpg)]">
           <div>🥦</div>
           <div>Bienvenue sur Adalicious !</div>
         </h2>
         <p className="m-2 text-center">
           Pour commencer, quel est ton prénom ?
-          </p>
+        </p>
         <form className="flex flex-col justify-center items-center gap-2 m-auto p-3 w-fit rounded-md border-1 border-(--fourthColor) bg-(--thirdColor)">
-          <input
-            type="text"
-            placeholder="Ton prénom"
-            value={userName}
-            onChange={e => setUserName(e.target.value)}
-            className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)">
-          </input>
+          <div>
+            <p className="text-center font-bold">
+              Identifiant :
+              </p>
+            <input
+              type="text"
+              placeholder="Ton identifiant"
+              value={userName}
+              onChange={e => setUserName(e.target.value)}
+              className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)">
+            </input>
+          </div>
+          <div>
+            <p className="text-center font-bold">
+              Mot de passe :
+            </p>
+            <input
+              type="text"
+              placeholder="Saisir le mot de passe"
+              className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)"
+            >
+            </input>
+          </div>
           <Link href="./menu" className="border border-(--fourthColor) p-2 w-[80%] text-center font-bold rounded-sm bg-(--secondColor) shadow-xs hover:translate-0.25 hover:ease-in-out hover:duration-[0.2s]">
             <Button
               type="submit"

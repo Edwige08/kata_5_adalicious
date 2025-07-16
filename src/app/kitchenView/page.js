@@ -9,10 +9,16 @@ export default function KitchenView() {
     const readyStatus = "Prête !";
     const preparingStatus = "En préparation...";
 
+    const StatusColors = {
+        'sent': 'border-3 border-(--fourthColor)',
+        'En préparation...': 'border-3 border-(--secondColor)',
+        'Prête !': 'border-3 border-(--thirdColor)',
+    };
+
     async function getOrders() {
         const response = await fetch('http://localhost:3010/orders');
         const data = await response.json();
-        setOrdersList(data);
+        setOrdersList(data);        
     }
 
     async function changeStatus(orderId, status) {
@@ -24,6 +30,9 @@ export default function KitchenView() {
             body: JSON.stringify({ orderId: orderId, order_status: status })
         });
         const data = await response.json();
+        if (response.ok) {
+            await getOrders();
+        }
     }
 
     async function deleteOrder(orderId) {
@@ -66,18 +75,21 @@ export default function KitchenView() {
                     return (
                         <div
                             key={index}
-                            className="flex flex-col items-center min-w-[300px] max-w-[500px]">
-                            <div className='flex flex-col gap-2 border border-2 border-(--fourthColor) rounded-lg m-2 p-2 w-full'>
+                            className="flex flex-col items-center w-[90%] max-w-[450px]">
+                            <div className={`flex flex-col gap-2 border border-2 rounded-lg m-2 p-2 w-full ${StatusColors[order.order_status]}`}>
                                 <div className="flex flex-row w-full">
                                     <p className="flex flex-col justify-start mr-2 p-3 size-fit border rounded-lg border-(--secondColor) bg-(--firstColor) text-4xl">
-                                        {order.id}
+                                        {order.dishes.image}
                                     </p>
                                     <div>
                                         <h3 className="font-bold mb-2 text-lg">
-                                            Commande de l'user à l'id n°{order.user_id}
+                                            Commande de {order.users.username}
                                         </h3>
+                                        <p>
+                                            {order.order_status}
+                                        </p>
                                         <p className="italic">
-                                            1x plat à l'id n°{order.dish_id}
+                                            1x {order.dishes.dish_name}
                                         </p>
                                     </div>
                                 </div>
