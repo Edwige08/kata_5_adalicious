@@ -96,12 +96,12 @@ export default function KitchenView() {
                                 <div className="flex flex-row gap-4 justify-around w-full">
                                     <Button
                                         text="En préparation"
-                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--secondColor) font-bold text-(--firstColor) hover:translate-0.5"
+                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--secondColor) font-bold text-(--background) text-shadow-xs ease-in-out duration-150 hover:translate-0.25 hover:text-shadow-sm"
                                         onClick={() => { handleClickStatus(order.id, preparingStatus) }}
                                     />
                                     <Button
                                         text="Prête !"
-                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--thirdColor) font-bold text-(--firstColor) hover:translate-0.5"
+                                        classe="p-2 pl-4 pr-4 w-full rounded-lg bg-(--thirdColor) font-bold text-(--background) text-shadow-xs ease-in-out duration-150 hover:translate-0.25 hover:text-shadow-sm"
                                         onClick={() => { handleClickStatus(order.id, readyStatus) }}
                                     />
                                 </div>
@@ -109,7 +109,7 @@ export default function KitchenView() {
                             <div className="w-full">
                                 <Button
                                     text="Annuler la commande"
-                                    classe="p-2 pl-4 pr-4 w-full rounded-lg bg-red-500 font-bold text-(--firstColor) hover:translate-0.5"
+                                    classe="p-2 pl-4 pr-4 w-full rounded-lg bg-red-500 font-bold text-(--background) text-shadow-xs ease-in-out duration-150 hover:translate-0.25 hover:text-shadow-sm"
                                     onClick={() => { handleClickDish(order.id) }}
                                 />
                             </div>

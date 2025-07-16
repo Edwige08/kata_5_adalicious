@@ -1,5 +1,5 @@
 'use client'
-import styles from "./page.module.css";
+// import styles from "./page.module.css";
 import Button from "./components/Button";
 import { useState } from "react";
 import Link from "next/link";
@@ -39,7 +39,7 @@ export default function Home() {
         </Link>
       </div>
       <div>
-        <h2 className="flex flex-col items-center m-2 mb-10 text-2xl font-bold bg-[url(./public/aperitif_amis.jpg)]">
+        <h2 className="flex flex-col items-center m-2 mb-10 text-2xl font-bold">
           <div>🥦</div>
           <div>Bienvenue sur Adalicious !</div>
         </h2>
