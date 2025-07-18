@@ -3,6 +3,7 @@
 import Button from "./components/Button";
 import { useState } from "react";
 import Link from "next/link";
+import Input from "./components/Input";
 
 export default function Home() {
   const [userName, setUserName] = useState("")
@@ -47,28 +48,25 @@ export default function Home() {
           Pour commencer, quel est ton prénom ?
         </p>
         <form className="flex flex-col justify-center items-center gap-2 m-auto p-3 w-fit rounded-md border-1 border-(--fourthColor) bg-(--thirdColor)">
-          <div>
-            <p className="text-center font-bold">
+          <div className="flex flex-col">
+            <label className="text-center font-bold">
               Identifiant :
-              </p>
-            <input
-              type="text"
+            </label>
+            <Input
+              text="text"
               placeholder="Ton identifiant"
               value={userName}
               onChange={e => setUserName(e.target.value)}
-              className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)">
-            </input>
+            />            
           </div>
-          <div>
-            <p className="text-center font-bold">
+          <div className="flex flex-col">
+            <label className="text-center font-bold">
               Mot de passe :
-            </p>
-            <input
-              type="text"
+            </label>
+            <Input
+              text="text"
               placeholder="Saisir le mot de passe"
-              className="p-2 rounded-md border-1 border-(--fourthColor) text-center bg-(--firstColor)"
-            >
-            </input>
+            />
           </div>
           <Link href="./menu" className="border border-(--fourthColor) p-2 w-[80%] text-center font-bold rounded-sm bg-(--secondColor) shadow-xs hover:translate-0.25 hover:ease-in-out hover:duration-[0.2s]">
             <Button
